@@ -21,6 +21,12 @@ def rand1dT1d(t:ti.template)->ti.template:
     return RANDOM_TBL[t[0], t[1]]
 
 @ti.func
+def rand3dT3d(t:ti.template)->ti.template:
+    
+    ret = ti.sin(t+0.546)*143758.5453
+    return ti.abs(ret-int(ret))
+
+@ti.func
 def easeIn(t:ti.template)->ti.template:
     return t*t
 
@@ -102,6 +108,7 @@ def gradientNoise3D(t:ti.template)->ti.f32:
             for x in ti.static(range(2)):
                 cell = int(t) + ti.Vector([x, y, z])
                 cellDirection = RANDOM3_TBL[cell[0], cell[1], cell[2]]*2-1
+                # cellDirection = rand3dT3d(cell)*2-1
                 compareVector = fraction - ti.Vector([x, y, z])
                 cellNoiseX[x] = cellDirection.dot(compareVector)
                 # return cellDirection.dot(compareVector)
