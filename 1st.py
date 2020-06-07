@@ -7,7 +7,7 @@ pixels=ti.var(dt=ti.f32,shape=(n*2,n))
 
 RANDOM_TBL = ti.Vector(2, dt=ti.f32, shape=(n*2,n))
 
-CellSize = 0.2
+CellSize = 0.1
 
 @ti.func
 def rand1dT1d(t:ti.template)->ti.template:
